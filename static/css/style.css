@@ -1,0 +1,59 @@
+.nav-wrapper {
+  background-color: #edede8;
+  height: 169%;
+}
+
+nav {
+    background-color: #edede8;
+}
+
+nav ul a {
+  color: #3c3c3c;
+}
+
+.material-icons {
+  color: #3c3c3c;
+}
+
+/* https://matthewjamestaylor.com/bottom-footer#solution */
+.main-content {
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    grid-template-columns:100%;
+ 
+    /* fallback height */
+    min-height:100vh;
+ 
+    /* new small viewport height for modern browsers */
+    min-height:100svh;
+ }
+ 
+nav .brand-logo {
+    font-family: libre baskerville;
+    color: #3c3c3c;
+}
+
+.logo {
+    font-family: libre baskerville;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 2.1rem;
+}
+
+.page-footer {
+  background-color: #5e7284;
+  color: #ffffff;
+}
+
+.footer-copyright {
+  background-color: #5e7284;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-inline-start: 28%;
+    margin-inline-end: 28%;
+}

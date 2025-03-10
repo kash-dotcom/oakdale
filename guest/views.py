@@ -5,4 +5,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Heroku, welcome to Oakdale Spa!")
+    return render(request, "guest/index.html")
+
+
+class client:
+    template_name = "guest/index.html"
