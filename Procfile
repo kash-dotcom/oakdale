@@ -1,1 +1,1 @@
-web: gunicorn spa_experience.wsgi
+web: gunicorn spa_experience.wsgi --log-file -
