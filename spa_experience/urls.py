@@ -21,4 +21,5 @@ from guest import views as guest_views
 urlpatterns = [
     path('', guest_views.index, name='index'),
     path('admin/', admin.site.urls),
+    path("accounts/", include("allauth.urls")),
 ]

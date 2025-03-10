@@ -1,6 +1,29 @@
-.nav-wrapper {
+nav .nav-wrapper {
+  display: flex;
   background-color: #edede8;
   height: 169%;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: libre baskerville, serif;
+}
+
+.carousel {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  color: #3c3c3c;
+  font-family: libre baskerville;
+  font-size: 3rem;
+  z-index: 1;
 }
 
 nav {
@@ -15,6 +38,8 @@ nav ul a {
   color: #3c3c3c;
 }
 
+
+
 /* https://matthewjamestaylor.com/bottom-footer#solution */
 .main-content {
     display:grid;
@@ -22,13 +47,16 @@ nav ul a {
     grid-template-columns:100%;
  
     /* fallback height */
-    min-height:100vh;
+    /* min-height:100vh; */
  
     /* new small viewport height for modern browsers */
-    min-height:100svh;
+    /* min-height:100svh; */
+
+    margin-top: 65px;
  }
  
 nav .brand-logo {
+    max-height: 100%;
     font-family: libre baskerville;
     color: #3c3c3c;
 }
@@ -57,3 +85,10 @@ nav .brand-logo {
     margin-inline-start: 28%;
     margin-inline-end: 28%;
 }
+
+@media screen and (max-width: 530px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
+}
+
