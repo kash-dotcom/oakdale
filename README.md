@@ -1,8 +1,17 @@
 
+# Entity Relationship Diagram (ERD)
+[Oakdale Spa's ERD](https://drawsql.app/teams/de-pointe/diagrams/spa)
+
+
 # Technologies
 [Materialize]([text](https://materializecss.com/))
+[Draw SQL]([text](https://drawsql.app/teams/de-pointe/diagrams/spa))
+[Canva]()
 
 # References
+
+## Design
+[Colour Picker]([text](https://imagecolorpicker.com/))
 
 ## Error Handling
 [HTTP Cats]([text](https://http.cat/))
