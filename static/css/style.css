@@ -105,3 +105,9 @@ nav .brand-logo {
   position: absolute;
   top: 14%;
 }
+/* Experience  */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating)  {
+  font-family: 'Libre Baskerville';
+  font-size: xx-large;
+  color: #007680;
+}

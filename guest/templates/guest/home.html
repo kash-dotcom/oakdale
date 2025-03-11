@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load cloudinary %}
+
+{% block content %}
+<div class="welcome">
+    <div class="container title">
+        <h1 class="center-align">Welcome to Oakdale Spa</h1>
+        <p class="center-align">Relax and unwind in our luxurious spa</p>
+    </div>
+    <div class="carousel carousel-slider">
+        <a class="carousel-item" href="#one!"><img src="static/img/oakdale_square_logo.png"></a>
+        <a class="carousel-item" href="#two!"><img src="static/img/oakdale_square_logo.png"></a>
+        <a class="carousel-item" href="#three!"><img src="static/img/oakdale_square_logo.png"></a>
+        <a class="carousel-item" href="#four!"><img src="static/img/oakdale_square_logo.png"></a>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for experience in experience_list %}
+        <div class="col s12 l4">
+            <div class="card">
+                <div class="card-image">
+                    {% if "placeholder" in experience.experience_image.url %}
+                    <img src="static/img/oakdale_square_logo.png" alt="placeholder image" class="card-image">
+                    {% else %}
+                    <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
+                    <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
+                    {% endif %}
+                </div>
+                <div class="card-content">
+                    <p>{{ experience.experience_description }}</p>
+                </div>
+                <div class="card-action">
+                    <a class="experience-price" href="#">£{{ experience.experience_price }}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>        
+</div>
+
+{% endblock %}

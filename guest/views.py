@@ -7,10 +7,14 @@ from .models import Experience
 
 class ExperienceList(generic.ListView):
     model = Experience
+    queryset = Experience.objects.filter(publish=True)
+    template_name = "home.html"
 
 
-# def index(request):
-#     return render(request, "guest/index.html")
+def home(request):
+    experience_list = Experience.objects.filter(publish=True)
+    return render(request, "guest/home.html", {
+        'experience_list': experience_list})
 
 
 # class client:
