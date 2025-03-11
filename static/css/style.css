@@ -2,6 +2,13 @@ nav .nav-wrapper {
   display: flex;
   background-color: #edede8;
   height: 169%;
+  flex-direction: column-reverse;
+  align-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #3c3c3c;
 }
 
 .welcome {
@@ -38,8 +45,6 @@ nav ul a {
   color: #3c3c3c;
 }
 
-
-
 /* https://matthewjamestaylor.com/bottom-footer#solution */
 .main-content {
     display:grid;
@@ -47,10 +52,10 @@ nav ul a {
     grid-template-columns:100%;
  
     /* fallback height */
-    /* min-height:100vh; */
+    min-height:100vh;
  
-    /* new small viewport height for modern browsers */
-    /* min-height:100svh; */
+    /* new small viewport height for modern browsers
+    min-height:100svh; */
 
     margin-top: 65px;
  }
@@ -68,7 +73,7 @@ nav .brand-logo {
     font-size: 2.1rem;
 }
 
-.page-footer {
+.adapted-footer {
   background-color: #5e7284;
   color: #ffffff;
 }
@@ -92,3 +97,11 @@ nav .brand-logo {
   }
 }
 
+
+/* sign out */
+.signout-container  {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 14%;
+}
