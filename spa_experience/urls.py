@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from guest import views as guest_views
+from experience import views as experience_views
 
 
 urlpatterns = [
-    path('', guest_views.home, name='home'),
+    path('home', experience_views.home, name='home'),
     path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
+    path('reservation/', include('reservation.urls')),
+    path('', include('experience.urls')),
+    path('guest/', include('guest.urls')),
 ]

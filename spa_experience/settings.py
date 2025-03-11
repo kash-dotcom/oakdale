@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'guest',
+    'reservation',
+    'experience',
     'cloudinary',
 ]
 

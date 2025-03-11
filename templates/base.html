@@ -44,35 +44,41 @@
     <header>
         <div class="navbar-fixed">
             <nav class="nav-extended">
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Oakdale Spa</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_signup' %}">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_login' %}">Login</a>
-                        </li>
-                        {% endif %}
-                        <li><a href="#"></a></li>
-                    </ul>
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{% url 'home' %}" class="brand-logo">Oakdale Spa</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
+                                class="material-icons">menu</i></a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
+                                    aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == signup_url %}active{% endif %}"
+                                    aria-current="page" href="{% url 'account_signup' %}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == login_url %}active{% endif %}"
+                                    aria-current="page" href="{% url 'account_login' %}">Login</a>
+                            </li>
+                            {% endif %}
+
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                
+                <div><a class="waves-effect waves-light btn right valign-wrapper" href="{% url 'reservation' %}">Book
+                        now</a></div>
                 </div>
-                <div><a class="waves-effect waves-light btn right valign-wrapper">Book now</a></div>
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab"><a href="#test1">Test 1</a></li>
-                        <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                        <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
-                        <li class="tab"><a href="#test4">Test 4</a></li>
+                        <li class="tab"><a href="#"></a></li>
+                        <li class="tab"><a href="#"></a></li>
+                        <li class="tab"><a href="#"></a></li>
+                        <li class="tab"><a href="#"></a></li>
                     </ul>
                 </div>
             </nav>
