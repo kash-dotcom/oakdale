@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from guest import views as guest_views
+
 
 urlpatterns = [
-    path('', guest_views.index, name='index'),
+    # path('', guest_views.index, name='index'),
     path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
 ]

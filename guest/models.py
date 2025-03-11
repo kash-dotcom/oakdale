@@ -4,17 +4,17 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class ValuedGuest(models.Model):
-    login_id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    guest = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='guest')
+class Experience(models.Model):
+    experience_id = models.AutoField(primary_key=True)
+    experience_name = models.CharField(max_length=50)
+    experience_description = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='images/')
+    experience_price = models.DecimalField(max_digits=6, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.username
+        return self.experience_name
 
 
 class Guest(models.Model):
@@ -30,8 +30,6 @@ class Guest(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     last_visit = models.DateTimeField()
-    valued_guest = models.ForeignKey(
-        ValuedGuest, on_delete=models.CASCADE, related_name='guests')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -44,29 +42,18 @@ class Reservation(models.Model):
     reservation_price = models.DecimalField(max_digits=6, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    experience = models.ForeignKey(
+        Experience, on_delete=models.CASCADE, related_name='reservations')
     guest = models.ForeignKey(
-        Guest, on_delete=models.CASCADE, related_name='guest_reservations')
+        Guest,
+        on_delete=models.CASCADE,
+        related_name='guest_reservations')
 
     def __str__(self):
         return f"{self.reservation_date} {self.reservation_time}"
 
 
-class Experience(models.Model):
-    experience_id = models.AutoField(primary_key=True)
-    experience_name = models.CharField(max_length=50)
-    experience_description = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images/')
-    experience_price = models.DecimalField(max_digits=6, decimal_places=2)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name='experiences')
-
-    def __str__(self):
-        return self.experience_name
-
-
-class Enhancements(models.Model):
+class Enhancement(models.Model):
     enhancement_id = models.AutoField(primary_key=True)
     enhancement_name = models.CharField(max_length=50)
     enhancement_description = models.CharField(max_length=200)
@@ -76,7 +63,9 @@ class Enhancements(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name='enhancements')
+        Reservation,
+        on_delete=models.CASCADE,
+        related_name='enhancements')
 
     def __str__(self):
         return self.enhancement_name
@@ -89,7 +78,9 @@ class Payment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name='payments')
+        Reservation,
+        on_delete=models.CASCADE,
+        related_name='payments')
 
     def __str__(self):
         return f"{self.payment_date} {self.payment_amount}"
@@ -104,7 +95,9 @@ class Review(models.Model):
     guest = models.ForeignKey(
         Guest, on_delete=models.CASCADE, related_name='reviews')
     Reservation = models.ForeignKey(
-        Reservation, on_delete=models.CASCADE, related_name='reviews')
+        Reservation,
+        on_delete=models.CASCADE,
+        related_name='reviews')
 
     def __str__(self):
         return self.review_text
