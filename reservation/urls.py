@@ -7,6 +7,7 @@ urlpatterns = [
     # path('get_experience_price/<int:experience_id>/', views.get_experience_price, name='get_experience_price'),
     path('add/', views.add_reservation, name='add_reservation'),
     path('confirmation/<int:reservation_id>', views.confirmation, name='confirmation'),
+    path('past_reservations/', views.past_reservations, name='past_reservations'),
 ]
     # path('delete/', views.delete_reservation, name='delete_reservation'),
     # path('update/', views.update_reservation, name='update_reservation'),

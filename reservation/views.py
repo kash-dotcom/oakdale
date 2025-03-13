@@ -3,10 +3,12 @@ from django.views import generic
 from experience.models import Experience
 from django.http import JsonResponse
 from .models import Reservation
-# from guest.models import Guest
+from guest.models import Guest
 # from experience.models import Experience
 from .forms import GuestForm, ExperienceForm, ReservationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from reservation.models import Reservation
 
 # Create your views here.
 
@@ -48,8 +50,13 @@ def add_reservation(request):
         reservation_form = ReservationForm(request.POST)
 
         if guest_form.is_valid() and experience_form.is_valid() and reservation_form.is_valid():
-            guest = guest_form.save()
-            experience = experience_form.cleaned_data['experience_name']  # Use 'experience_name' instead of 'experience'
+            guest, created = Guest.objects.get_or_create(user=request.user)
+            if not created:
+                guest_form = GuestForm(request.POST, instance=guest)
+                guest = guest_form.save()
+
+            experience = experience_form.cleaned_data['experience_name']
+
             reservation = reservation_form.save(commit=False)
             reservation.guest = guest
             reservation.experience = experience
@@ -87,6 +94,17 @@ def confirmation(request, reservation_id):
         'reservation_price': reservation.reservation_price,
     }
     return render(request, 'reservation/confirmation.html', context)
+
+
+@login_required
+def past_reservations(request):
+    guest = Guest.objects.get(user=request.user)
+    reservations = Reservation.objects.filter(guest=guest)
+    return render(request, 'reservation/past_reservations.html', {'reservations': reservations})
+
+
+
+    
 
 # def delete_reservation(request):
 #     return render(request, 'delete_reservation.html', {})

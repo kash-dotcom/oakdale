@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cloudinary %}
+{% load static %}
+
+<div class="container">
+  <h1> Your reservations </h1>
+  <div class="col s12 m7">
+    {% for reservation in reservations %}
+    <h4 class="header">{{reservation.experience.experience_name}} | {{reservation.reservation_date}} </h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{ reservation.experience.experience_image.url }}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <ul>
+            <li>Number of Guests: {{reservation.number_of_guests}}</li>
+            <li> Total Price: £{{reservation.reservation_price}}</li>
+          </ul>
+        </div>
+        <div class="card-action">
+          <span><a class="waves-effect waves-light btn">Edit</a></span>
+          <span><a class="waves-effect waves-light btn">update</a></span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
