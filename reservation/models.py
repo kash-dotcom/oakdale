@@ -20,4 +20,4 @@ class Reservation(models.Model):
         related_name='guest_reservations')
 
     def __str__(self):
-        return f"{self.reservation_date} {self.reservation_time}"
+        return f"{self.reservation_date.strftime('%Y-%m-%d')} - {self.number_of_guests} guests"

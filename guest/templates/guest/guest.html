@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+{% load cloudinary %}
+{% load static %}
+
+{% if experience %}
+<div class="container">
+  <div class="col s12 m7">
+    <h2 class="header">{{ experience.experience_name }}</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{ experience.experience_image.url }}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>{{ experience.experience_description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container">
+  <div class="row">
+    {% for experience in experience_list %}
+    <div class="col s12 l4">
+      <div class="card">
+        <div class="card-image">
+          {% if "placeholder" in experience.experience_image.url %}
+          <img src="{% static 'img/oakdale_square_logo.png' %}" alt="placeholder image" class="card-image">
+          {% else %}
+          <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
+          <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1 btn modal-trigger"
+            href="#modal1"><i class="material-icons">add</i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="row col l8">
+    <form id="reservation_form" method="POST">
+      {% csrf_token %}
+      <div class="input-field col s6">
+        {{ form.first_name.label_tag }}
+        {{ form.first_name }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.last_name.label_tag }}
+        {{ form.last_name }}
+      </div>
+      <div class="input-field col s12">
+        {{ form.address.label_tag }}
+        {{ form.address }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.city.label_tag }}
+        {{ form.city }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.postcode.label_tag }}
+        {{ form.postcode }}
+      </div>
+      <div class="input-field col s12">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.phone_number.label_tag }}
+        {{ form.phone_number }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.experience_name.label_tag }}
+        {{ form.experience_name }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.experience_price.label_tag }}
+        {{ form.experience_price }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.number_of_guests.label_tag }}
+        {{ form.number_of_guests }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.reservation_date.label_tag }}
+        {{ form.reservation_date }}
+      </div>
+      <div class="input-field col s6">
+        {{ form.reservation_price.label_tag }}
+        {{ form.reservation_price }}
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Save
+        <i class="material-icons right">save</i>
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

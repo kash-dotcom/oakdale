@@ -1,10 +1,10 @@
-from . import views
-from django.contrib import admin
-from django.urls import path, include
-from .views import ExperienceList
+# from . import views
+# from django.contrib import admin
+# from django.urls import path, include
+# from .views import GuestList
 
-# Create your views here.
+# # Create your views here.
 
-urlpatterns = [
-    path('', ExperienceList.as_view(), name='experience_list'),
-]
+# urlpatterns = [
+#     path('', GuestList.as_view(), name='guest_list'),
+# ]

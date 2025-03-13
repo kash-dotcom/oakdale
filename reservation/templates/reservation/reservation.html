@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+{% load cloudinary %}
+{% load static %}
+
+{% if experience %}
+<div class="container">
+    <div class="col s12 m7 l8">
+        <h2 class="header">{{ experience.experience_name }}</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="{{ experience.experience_image.url }}">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>{{ experience.experience_description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row col s12 m5 l4">
+        {% for experience in experience_list %}
+        <div class="col s12 l4">
+            <div class="card">
+                <div class="card-image">
+                    {% if "placeholder" in experience.experience_image.url %}
+                    <img src="static/img/oakdale_square_logo.png" alt="placeholder image" class="card-image">
+                    {% else %}
+                    <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
+                    <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1 btn modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endif %}
+    <div class="row col l8">
+        <form id="reservation_form" method="POST" action="{% url 'add_reservation' %}">
+            {% csrf_token %}
+            {{ guest_form }}
+            {{ experience_form }}
+            {{ reservation_form }}
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                <i class="material-icons right">save</i>
+            </button>
+        </form>
+    </div>
+</div>
+                
+{% endblock %}
+
+Lookup experience_id and return experience_price

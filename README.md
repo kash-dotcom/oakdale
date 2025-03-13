@@ -10,6 +10,9 @@
 
 # References
 
+## Choice Field
+[Choice Field](https://stackoverflow.com/questions/8859504/django-form-dropdown-list-of-numbers)
+
 # Overriding CSS Frameworks
 [Jonathan Soma](https://jonathansoma.com/everything/web/overriding-frameworks/)
 
