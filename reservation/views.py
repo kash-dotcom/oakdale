@@ -60,7 +60,7 @@ def add_reservation(request):
             guest.save()
 
             messages.success(request, 'Reservation created successfully!')
-            # return redirect('reservation_confirmation', reservation_id=reservation.id)
+            return redirect('confirmation', reservation_id=reservation.reservation_id)
         else:
             messages.error(request, 'There was an error with your submission.')
     else:
@@ -73,6 +73,21 @@ def add_reservation(request):
         'experience_form': experience_form,
         'reservation_form': reservation_form,
     })
+
+
+def confirmation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
+    guest = reservation.guest
+    experience = reservation.experience
+
+    context = {
+        'reservation': reservation,
+        'guest': guest,
+        'experience': experience,
+        'reservation_price': reservation.reservation_price,
+    }
+    return render(request, 'reservation/confirmation.html', context)
+
 # def delete_reservation(request):
 #     return render(request, 'delete_reservation.html', {})
 

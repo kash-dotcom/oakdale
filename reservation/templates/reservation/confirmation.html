@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load cloudinary %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h2 class="header">{{ experience.experience_name }}</h2>
+            <p>Thank you, {{ guest.first_name }} for choosing to unwind with us at Oakdale Spa! We are delighted to
+                confirm your reservation.</p>
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="{{ experience.experience_image.url }}">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{ experience.experience_description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col s12">
+            <br>
+            <h2>Reservation Details</h2>
+            <ul>
+                <li>Number of Guests: {{reservation.number_of_guests}}</li>
+                <li> Date: {{reservation.reservation_date}}</li>
+                <li> Experience: {{experience.experience_name}}</li>
+                <li> Total Price: £{{reservation.reservation_price}}<li>
+
+            </ul>
+
+            <p>We look forward to welcoming you to Oakdale Spa and providing you with a truly rejuvenating experience.
+                If you have any questions or require further assistance, please do not hesitate to contact us.</p>
+    </div>
+</div>
+    {% endblock %}
