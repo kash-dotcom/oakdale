@@ -1,28 +1,12 @@
-// sidenav
-
+// Materialize
 $(document).ready(function () {
   $('.sidenav').sidenav();
-});
-
-// carousel
-
-$('.carousel.carousel-slider').carousel({
-  fullWidth: true,
-  indicators: true
-});
-
-// modal
-$(document).ready(function () {
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
   $('.modal').modal();
-});
-
-// toast
-$(document).ready(function () {
   $('login_success').tooltip();
-});
-
-// datepicker
-$(document).ready(function () {
   $('.datepicker').datepicker();
 });
 
@@ -49,6 +33,7 @@ $(document).on('click', '#add-reservation', function (e) {
 
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
@@ -66,3 +51,47 @@ document.addEventListener('DOMContentLoaded', function() {
         experiencePriceInput.value = data.experience_price;
       });
   });
+
+// modal 
+// document.querySelectorAll('.modal-trigger').forEach(function(trigger) {
+//   trigger.addEventListener('click', function() {
+//     var reservationId = this.getAttribute('data-id');
+//     var reservationDate = this.getAttribute('data-date');
+//     var numberOfGuests = this.getAttribute('data-guests');
+//     var experienceId = this.getAttribute('data-experience');
+
+//     if (this.href.includes('#modal2')) {
+//       document.getElementById('reservation-id').value = reservationId;
+//       document.getElementById('id_reservation_date').value = reservationDate;
+//       document.getElementById('id_number_of_guests').value = numberOfGuests;
+//       document.getElementById('id_experience_name').value = experienceId;
+//     } else if (this.href.includes('#modal3')) {
+//       document.getElementById('delete-reservation-id').value = reservationId;
+//     }
+//   });
+// });
+
+
+// // delete reservation
+// $(document).on('click', 'delete-reservation', function(e) {
+//   e.preventDefault();
+
+//   var reservationId = $(this).data('id');
+
+//   $.ajax({
+//     type: 'POST',
+//     url: '{% url "delete_reservation" %}',
+//     data: {
+//       reservation_id: (this).data('id'),
+//       csrfmiddlewaretoken: '{{ csrf_token }}',
+//       action: 'post'
+//     },
+//     success: function(json) {
+//       console.log(json);
+//       document.getElementById('reservation-' + reservationId).remove();
+//       M.toast({html: 'Reservation deleted successfully!'});
+//     },
+//     error: function(xhr, errmsg, err) {
+
+//     }
+//   });

@@ -25,7 +25,8 @@ class GuestForm(forms.ModelForm):
 
 class ExperienceForm(forms.ModelForm):
     experience_name = forms.ModelChoiceField(
-        queryset=Experience.objects.filter(publish=True))
+        queryset=Experience.objects.filter(publish=True),
+        empty_label=None,)
 
     class Meta:
         model = Experience

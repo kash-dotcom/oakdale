@@ -9,7 +9,7 @@
         <h2 class="header">{{ experience.experience_name }}</h2>
         <div class="card horizontal">
           <div class="card-image">
-            <img src="{{ experience.experience_image.url }}">
+            <img id="experience-picture" src="{{ experience.experience_image.url }}">
           </div>
           <div class="card-stacked">
             <div class="card-content">
@@ -46,14 +46,11 @@
             {{ guest_form }}
             {{ experience_form }}
             {{ reservation_form }}
-
             <button class="btn waves-effect waves-light" type="submit" name="action">Save
                 <i class="material-icons right">save</i>
             </button>
         </form>
     </div>
 </div>
-                
 {% endblock %}
 
-Lookup experience_id and return experience_price

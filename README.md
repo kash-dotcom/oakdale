@@ -10,6 +10,9 @@
 
 # References
 
+## Messages
+[text](https://codewithstein.com/how-to-use-the-messages-framework-django-tutorial/)
+
 ## Choice Field
 [Choice Field](https://stackoverflow.com/questions/8859504/django-form-dropdown-list-of-numbers)
 

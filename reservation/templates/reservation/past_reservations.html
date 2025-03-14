@@ -21,12 +21,27 @@
           </ul>
         </div>
         <div class="card-action">
-          <span><a class="waves-effect waves-light btn">Edit</a></span>
-          <span><a class="waves-effect waves-light btn">update</a></span>
+          <span><a class="waves-effect waves-light btn waves-effect waves-light btn modal-trigger" href="{% url 'change_reservation' reservation_id=reservation.reservation_id %}">Edit</a></span>
+          <button data-target="modal3" class="waves-effect waves-light btn modal-trigger brown darken-1">Cancel</button>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
+
+ Modal Structure
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <h4>Are you sure you want to cancel your reservation?</h4>
+    <p>Once you hace deleted your reservation you cannot retrive it and you will have to book again.</p>
+  </div>
+  <div class="modal-footer" method="POST" action="{% url 'delete_reservation' %}">
+    {% csrf_token %}
+    <a href="#!" class="modal-close waves-effect waves-light btn waves-effect waves-light btn-flat">Yes, I'm sure</a>
+    <a href="#!" class="modal-close waves-effect waves-light btn waves-effect waves-light btn-flat">No, I'm not</a>
+  </div>
+  </div>
+  
 {% endblock %}
