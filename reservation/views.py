@@ -87,7 +87,8 @@ def add_reservation(request):
 
 
 def confirmation(request, reservation_id):
-    reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
+    reservation = get_object_or_404(
+        Reservation, reservation_id=reservation_id)
     guest = reservation.guest
     experience = reservation.experience
 
@@ -101,18 +102,11 @@ def confirmation(request, reservation_id):
 
 
 @login_required
-def past_reservations(request):
-    guest = Guest.objects.get(user=request.user)
-    reservations = Reservation.objects.filter(guest=guest)
-    return render(request, 'reservation/past_reservations.html',
-                  {'reservations': reservations})
-
-
-@login_required
 def change_reservation(request, reservation_id):
     # Fetch the guest and reservation
     guest = Guest.objects.get(user=request.user)
-    reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
+    reservation = get_object_or_404(
+        Reservation, reservation_id=reservation_id)
     # Check if the reservation belongs to the guest
     if request.method == 'POST':
         guest_form = GuestForm(request.POST, instance=reservation.guest)
@@ -155,12 +149,25 @@ def change_reservation(request, reservation_id):
 
 
 @login_required
-def delete_reservation(request):
-    reservation_id = request.POST.get('reservation_id')
-    reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
-    reservation.delete()
+def past_reservations(request):
+    guest = Guest.objects.get(user=request.user)
+    reservations = Reservation.objects.filter(guest=guest)
+    return render(request, 'reservation/past_reservations.html',
+                  {'reservations': reservations})
 
-    messages.success(request, 'Reservation deleted successfully!')
+
+@login_required
+def delete_reservation(request):
+    if request.method == 'POST':
+        reservation_id = request.POST.get('reservation_id')
+        if reservation_id:
+            reservation = get_object_or_404(
+                Reservation, reservation_id=reservation_id)
+            reservation.delete()
+            messages.success(request, 'Reservation deleted successfully!')
+            print('Reservation deleted successfully!')
+        else:
+            messages.error(request, 'Reservation ID is missing.')
     return redirect('past_reservations')
 
     # if request.method == 'POST':

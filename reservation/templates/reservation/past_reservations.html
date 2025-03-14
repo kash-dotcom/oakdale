@@ -9,39 +9,43 @@
   <div class="col s12 m7">
     {% for reservation in reservations %}
     <h4 class="header">{{reservation.experience.experience_name}} | {{reservation.reservation_date}} </h2>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="{{ reservation.experience.experience_image.url }}">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <ul>
-            <li>Number of Guests: {{reservation.number_of_guests}}</li>
-            <li> Total Price: £{{reservation.reservation_price}}</li>
-          </ul>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="{{ reservation.experience.experience_image.url }}">
         </div>
-        <div class="card-action">
-          <span><a class="waves-effect waves-light btn waves-effect waves-light btn modal-trigger" href="{% url 'change_reservation' reservation_id=reservation.reservation_id %}">Edit</a></span>
-          <button data-target="modal3" class="waves-effect waves-light btn modal-trigger brown darken-1">Cancel</button>
+        <div class="card-stacked">
+          <div class="card-content">
+            <ul>
+              <li>Number of Guests: {{reservation.number_of_guests}}</li>
+              <li> Total Price: £{{reservation.reservation_price}}</li>
+            </ul>
+          </div>
+          <div class="card-action">
+            <span><a class="waves-effect waves-light btn modal-trigger"
+                href="{% url 'change_reservation' reservation_id=reservation.reservation_id %}">Edit</a></span>
+            <button data-target="modal3" data-id="{{ reservation.reservation_id }}"
+              class="waves-effect waves-light btn modal-trigger brown darken-1 delete_reservation">Cancel</button>
+          </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
+      {% endfor %}
   </div>
 </div>
 
-
- Modal Structure
 <div id="modal3" class="modal">
   <div class="modal-content">
     <h4>Are you sure you want to cancel your reservation?</h4>
-    <p>Once you hace deleted your reservation you cannot retrive it and you will have to book again.</p>
+    <p>Once you have deleted your reservation you cannot retrive it and you will have to book again.</p>
   </div>
-  <div class="modal-footer" method="POST" action="{% url 'delete_reservation' %}">
-    {% csrf_token %}
-    <a href="#!" class="modal-close waves-effect waves-light btn waves-effect waves-light btn-flat">Yes, I'm sure</a>
-    <a href="#!" class="modal-close waves-effect waves-light btn waves-effect waves-light btn-flat">No, I'm not</a>
+  <div class="modal-footer">
+    <form id="delete-reservation-form" method="POST" action="{% url 'delete_reservation' %}">
+      {% csrf_token %}
+      <input type="hidden" name="reservation_id" id="delete-reservation-id">
+      <button type="submit"
+        class="modal-close btn waves-effect waves-light btn-flat">Yes, I'm sure</button>
+      <button href="#!" class="modal-close btn waves-effect waves-light btn-flat">No, I'm not </button>
+    </form>
   </div>
-  </div>
-  
+</div>
+
 {% endblock %}

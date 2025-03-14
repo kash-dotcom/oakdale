@@ -1,3 +1,5 @@
+
+
 // Materialize
 $(document).ready(function () {
   $('.sidenav').sidenav();
@@ -33,24 +35,24 @@ $(document).on('click', '#add-reservation', function (e) {
 
 });
 
-
+// Materialize select
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
 });
 
-  // Autofill experience price based on selected experience
-  var experienceSelect = document.getElementById('id_experience_name');
-  var experiencePriceInput = document.getElementById('id_experience_price');
+  // // Autofill experience price based on selected experience
+  // var experienceSelect = document.getElementById('id_experience_name');
+  // var experiencePriceInput = document.getElementById('id_experience_price');
 
-  experienceSelect.addEventListener('change', function() {
-    var selectedExperienceId = this.value;
-    fetch(`/get_experience_price/${selectedExperienceId}/`)
-      .then(response => response.json())
-      .then(data => {
-        experiencePriceInput.value = data.experience_price;
-      });
-  });
+  // experienceSelect.addEventListener('change', function() {
+  //   var selectedExperienceId = this.value;
+  //   fetch(`/get_experience_price/${selectedExperienceId}/`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       experiencePriceInput.value = data.experience_price;
+  //     });
+  // });
 
 // modal 
 // document.querySelectorAll('.modal-trigger').forEach(function(trigger) {
@@ -72,26 +74,17 @@ document.addEventListener('DOMContentLoaded', function() {
 // });
 
 
-// // delete reservation
-// $(document).on('click', 'delete-reservation', function(e) {
-//   e.preventDefault();
+// delete reservation
+  // Handle delete reservation button click
+  $(document).on('click', '.delete_reservation', function() {
+    var reservationId = $(this).data('id');
+    $('#delete-reservation-id').val(reservationId);
+    console.log('Delete reservation button clicked with reservation ID:', reservationId);
+  });
 
-//   var reservationId = $(this).data('id');
-
-//   $.ajax({
-//     type: 'POST',
-//     url: '{% url "delete_reservation" %}',
-//     data: {
-//       reservation_id: (this).data('id'),
-//       csrfmiddlewaretoken: '{{ csrf_token }}',
-//       action: 'post'
-//     },
-//     success: function(json) {
-//       console.log(json);
-//       document.getElementById('reservation-' + reservationId).remove();
-//       M.toast({html: 'Reservation deleted successfully!'});
-//     },
-//     error: function(xhr, errmsg, err) {
-
-//     }
-//   });
+  // Log form submission
+  $('#delete-reservation-form').on('submit', function(e) {
+    e.preventDefault(); 
+    var reservationId = $('#delete-reservation-id').val();
+      this.submit();    
+  });
