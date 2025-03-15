@@ -11,6 +11,20 @@ nav .nav-wrapper {
   color: #3c3c3c;
 }
 
+#book-now {
+  margin-bottom: 24px;
+}
+
+#cancel-btn {
+  background-color: #3c3c3c;
+}
+
+#scale-demo {
+  color: #3c3c3c;
+  font-family: libre baskerville;
+  font-size: large;
+}
+
 .welcome {
   display: flex;
   flex-direction: row-reverse;
@@ -19,6 +33,11 @@ nav .nav-wrapper {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: libre baskerville, serif;
+}
+
+p {
+
+  font-size: medium;
 }
 
 .carousel {
