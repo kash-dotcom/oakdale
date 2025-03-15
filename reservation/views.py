@@ -12,16 +12,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-# def reservation(request, experience_id=None):
-#     experience = None
-#     if experience_id:
-#         experience = get_object_or_404(Experience, pk=experience_id)
-#     return render(request, 'reservation.html', {
-#         'experience': experience,
-#         'experience_list': Experience.objects.filter(publish=True)
-#     })
-
-
 class ReservationListView(generic.ListView):
     model = Reservation
     queryset = Reservation.objects.all()
@@ -51,6 +41,7 @@ def add_reservation(request):
         if (guest_form.is_valid() and
             experience_form.is_valid() and
                 reservation_form.is_valid()):
+            
             guest, created = Guest.objects.get_or_create(user=request.user)
             if not created:
                 guest_form = GuestForm(request.POST, instance=guest)
@@ -87,8 +78,8 @@ def add_reservation(request):
 
 
 def confirmation(request, reservation_id):
-    reservation = get_object_or_404(
-        Reservation, reservation_id=reservation_id)
+    guest = get_object_or_404(Guest, user=request.user)
+    reservation = get_object_or_404(Reservation, reservation_id=reservation_id, guest=guest)
     guest = reservation.guest
     experience = reservation.experience
 
@@ -105,26 +96,39 @@ def confirmation(request, reservation_id):
 def change_reservation(request, reservation_id):
     # Fetch the guest and reservation
     guest = Guest.objects.get(user=request.user)
-    reservation = get_object_or_404(
-        Reservation, reservation_id=reservation_id)
-    # Check if the reservation belongs to the guest
+
+    print(guest)
+
+    reservation = get_object_or_404(Reservation, reservation_id=reservation_id, guest=guest)
+    print(reservation)
+    print(reservation.experience)
+
     if request.method == 'POST':
         guest_form = GuestForm(request.POST, instance=reservation.guest)
-        experience_form = ExperienceForm(request.POST,
-                                         instance=reservation.experience)
+        experience_form = ExperienceForm(request.POST)
         reservation_form = ReservationForm(request.POST, instance=reservation)
 
         if (reservation_form.is_valid() and
             guest_form.is_valid() and
                 experience_form.is_valid()):
-            guest = guest_form.save()
 
-            experience = experience_form.save()
-            reservation = reservation_form.save(commit=False)
-            reservation.reservation_price = (
-                experience.experience_price * reservation.number_of_guests
+            guest = guest_form.save(commit=False)
+            new_experience_data = experience_form.cleaned_data
+
+            # Check if an Experience with the same details already exists
+            new_experience, created = Experience.objects.get_or_create(
+                experience_name=new_experience_data['experience_name'],
+                defaults=new_experience_data
             )
+
+            # Update the reservation with the new or existing experience
+            reservation.experience = new_experience
+            reservation.reservation_price = (
+                new_experience.experience_price * reservation.number_of_guests
+            )
+
             reservation.save()
+            guest.save()
 
             messages.success(request, 'Reservation updated successfully!')
             return redirect('past_reservations')
@@ -132,10 +136,7 @@ def change_reservation(request, reservation_id):
             messages.error(request, 'There was an error with your submission.')
     else:
         guest_form = GuestForm(instance=guest)
-        experience_form = ExperienceForm(
-            instance=reservation.experience,
-            initial={'experience_name': reservation.experience}
-        )
+        experience_form = ExperienceForm(instance=reservation.experience)
         reservation_form = ReservationForm(instance=reservation)
 
     context = {
@@ -161,14 +162,33 @@ def delete_reservation(request):
     if request.method == 'POST':
         reservation_id = request.POST.get('reservation_id')
         if reservation_id:
+            guest = Guest.objects.get(user=request.user)
             reservation = get_object_or_404(
-                Reservation, reservation_id=reservation_id)
+                Reservation, reservation_id=reservation_id, guest=guest)
             reservation.delete()
             messages.success(request, 'Reservation deleted successfully!')
             print('Reservation deleted successfully!')
         else:
             messages.error(request, 'Reservation ID is missing.')
     return redirect('past_reservations')
+
+    #    # Check if the experience name has changed
+    #         if new_experience.experience_name != reservation.experience.experience_name:
+    #             new_experience.pk = None
+    #             new_experience.save(commit=False)
+
+    #             reservation.experience.experience_name = new_experience.experience_name
+    #             reservation.experience.experience_description = new_experience.experience_description
+    #             reservation.experience.experience_image = new_experience.experience_image
+    #             reservation.experience.experience_price = new_experience.experience_price
+    #             reservation.experience = reservation.new_experience
+    #             new_experience.save()
+
+    #         reservation = reservation_form.save(commit=False)
+    #         reservation.reservation_price = (
+    #             reservation.experience.experience_price * reservation.number_of_guests
+    #         )
+
 
     # if request.method == 'POST':
     #     reservation_id = request.POST.get('reservation_id')
