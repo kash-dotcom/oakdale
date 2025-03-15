@@ -17,6 +17,7 @@
 <div class="parallax-container">
     <div class="parallax"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742031409/twin-massage_bg4e0i.jpg"></div>
     </div>
+<Section id="section-experiences">
     <div class="container">
         <div class="row">
             {% for experience in experience_list %}
@@ -28,19 +29,22 @@
                         {% else %}
                         <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
                         <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1 btn" value="{{ experience_id }}" id="add-reservation" href="{% url 'reservation' %}"><i class="material-icons">add</i></a>
-                        {% endif %}
-                        Modal Structure
-                        <div id="modal1" class="modal">
+                        <a class="btn-floating halfway-fab waves-effect waves-light btn modal-trigger" value="" href="#modal {{ experience.experience_id }}"><i class="material-icons">add</i></a>
+                        <!-- <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1" href="{% url 'reservation' %}"><i class="material-icons">add</i></a> -->
+                    
+                        <div id="modal {{ experience.experience_id }}" class="modal {{ experience.experience_id }}">
                           <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>A bunch of text</p>
+                            <h4>{{ experience.experience_name | safe }}</h4>
+
+                            {{ experience.experience_full_description }}
+                            
                           </div>
                           <div class="modal-footer">
                             <a href="{% url 'reservation' %}" class="modal-close waves-effect waves-green btn-flat">Reserve your peace here</a>
                           </div>
                         </div>
                         </div>
+                        {% endif %}
     
                     <div class="card-content">
                         <p>{{ experience.experience_description }}</p>
@@ -53,7 +57,7 @@
             {% endfor %}
         </div>        
     </div>
-    
+</Section>
     </div>
     <div class="parallax-container">
     <div class="parallax"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742029474/face-massage-large_xavdcr.jpg"></div>
