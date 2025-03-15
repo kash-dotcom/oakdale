@@ -10,6 +10,7 @@ $(document).ready(function () {
   $('.modal').modal();
   $('login_success').tooltip();
   $('.datepicker').datepicker();
+  $('.parallax').parallax({ responsiveThreshold: 0 });
 });
 
 // https://www.youtube.com/watch?v=4NqAiqdjMI8&list=PLCC34OHNcOtpRfBYk-8y0GMO4i1p1zn50&index=13&ab_channel=Codemy.com

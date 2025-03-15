@@ -43,8 +43,6 @@
 # #         return render(request, 'account/signup.html', {'form': form})
 
 
-
-
 # # def guest_profile(request):
 # #     context = {}
 

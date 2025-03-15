@@ -7,6 +7,10 @@ nav .nav-wrapper {
   flex-wrap: wrap;
 }
 
+.parallax{
+  position:static;
+}
+
 .nav-link {
   color: #3c3c3c;
 }
