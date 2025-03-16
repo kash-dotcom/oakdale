@@ -4,70 +4,60 @@
 
 {% block content %}
 
-<!-- <div class="container title">
-    <h1 class="center-align">Welcome to Oakdale Spa</h1>
-    <p class="center-align">Relax and unwind in our luxurious spa</p>
-</div> -->
 <div class="section white">
     <div class="row container">
-        <h2 class="header center-align">Welcome to Oakdale Spa</h2>
-        <p class="grey-text center-align lighten-3">Relax and unwind in our luxurious spa</p>
+        <h1 class="header center-align headings">Welcome to Oakdale Spa</h1>
+        <p class="blue-grey-darken-3-text center-align lighten-3">Relax and unwind in our luxurious spa</p>
     </div>
 </div>
 <div class="parallax-container">
-    <div class="parallax"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742031409/twin-massage_bg4e0i.jpg"></div>
-    </div>
+    <div class="parallax"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742160560/twin-massage_rospud.jpg" alt="Woman lying on her front having a back massage"></div>
+</div>
 <section class="section white" id="About-us">
     <div class="row container">
-        <h2 class="header center-align">About us</h2>
-        <p class="grey-text center-align lighten-3">Oakdale Spa is a luxurious spa located in the heart of Gloucestershire. We offer a range of treatments and experiences to help you relax and unwind. Our experienced therapists are on hand to provide you with a bespoke experience tailored to your needs. Whether you're looking for a relaxing massage, a rejuvenating facial, or a pampering spa day, we have something for everyone. So why not treat yourself to some well-deserved pampering and book an experience with us today?</p>
+        <h2 class="header center-align headings">About us</h2>
+        <p class="blue-grey-darken-3-text center-align lighten-3">Oakdale Spa is a luxurious spa located in the heart of Gloucestershire. We offer a range of treatments and experiences to help you relax and unwind. Our experienced therapists are on hand to provide you with a bespoke experience tailored to your needs. Whether you're looking for a relaxing massage, a rejuvenating facial, or a pampering spa day, we have something for everyone. So why not treat yourself to some well-deserved pampering and book an experience with us today?</p>
     </div>
 </section>
 
-    </div>
-    <div class="parallax-container">
-    <div class="parallax"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742029474/face-massage-large_xavdcr.jpg"></div>
-    </div>
-    <Section id="section-experiences">
-        <div class="container">
-            <h2 class="header center-align">Our Experiences</h2>
-            <div class="row">
-                {% for experience in experience_list %}
-                <div class="col s12 m12 l6 ">
-                    <div class="card">
-                        <div class="card-image">
-                            {% if "placeholder" in experience.experience_image.url %}
-                            <img src="static/img/oakdale_square_logo.png" alt="placeholder image" class="card-image">
-                            {% else %}
-                            <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
-                            <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light btn modal-trigger" value="" href="#modal {{ experience.experience_id }}"><i class="material-icons">add</i></a>
-                            <!-- <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1" href="{% url 'reservation' %}"><i class="material-icons">add</i></a> -->
-                        
-                            <div id="modal {{ experience.experience_id }}" class="modal {{ experience.experience_id }}">
-                              <div class="modal-content">
-                                <h4>{{ experience.experience_name | safe }}</h4>
-    
-                                {{ experience.experience_full_description }}
-                                
-                              </div>
-                              <div class="modal-footer">
+<div class="parallax-container">
+    <div class="parallax face-massage"><img src="https://res.cloudinary.com/dybts6jei/image/upload/v1742161059/face-massage-large_e8ssrs.jpg" alt="Woman lying on her back having a face massage"></div>
+</div>
+<Section id="section-experiences">
+    <div class="container">
+        <h2 class="header center-align headings">Our Experiences</h2>
+        {% for experience in experience_list %}
+        <div class="row">
+            <div class="col s12 l6 xl4">
+                <div class="card">
+                    <div class="card-image">
+                        {% if "placeholder" in experience.experience_image.url %}
+                        <img src="static/img/oakdale_square_logo.png" alt="placeholder image" class="card-image">
+                        {% else %}
+                        <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
+                        <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
+                        <a class="btn-floating halfway-fab waves-effect waves-light btn modal-trigger" href="#modal {{ experience.experience_id }}"><i class="material-icons">add</i></a>
+                        <div id="modal {{ experience.experience_id }}" class="modal {{ experience.experience_id }}">
+                            <div class="modal-content">
+                                <h4 class="headings">{{ experience.experience_name | safe }}</h4>
+                                    {{ experience.experience_full_description }}
+                            </div>
+                            <div class="modal-footer">
                                 <a href="{% url 'reservation' %}" class="modal-close waves-effect waves-green btn-flat">Reserve your peace here</a>
-                              </div>
                             </div>
-                            </div>
-                            {% endif %}
-        
-                        <div class="card-content">
-                            <p>{{ experience.experience_description }}</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="experience-price" href="{% url 'reservation' %}">£{{ experience.experience_price }}</a>
                         </div>
                     </div>
+                        {% endif %}
+    
+                    <div class="card-content">
+                        <p>{{ experience.experience_description }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a class="experience-price" href="{% url 'reservation' %}">£{{ experience.experience_price }}</a>
+                    </div>
                 </div>
-                {% endfor %}
-            </div>        
-        </div>
-    </Section>
+            </div>
+        {% endfor %}
+    </div>        
+</Section>
 {% endblock %}

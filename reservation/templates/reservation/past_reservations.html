@@ -5,11 +5,11 @@
 {% load static %}
 
 <div class="container">
-  <h1> Your reservations </h1>
+  <h1 class="headings" id="your-reservation"> Your reservations </h1>
   {% if reservations %}
     {% for reservation in reservations %}
     <div class="col s12">
-      <h4 class="header">{{ reservation.experience.experience_name }} | {{ reservation.reservation_date|date:"d F Y" }}</h2>
+      <h2 class="header headings" class="past-reservation">{{ reservation.experience.experience_name }} | {{ reservation.reservation_date|date:"d F Y" }}</h2>
         <div class="card horizontal collection">
           <div class="card-image">
             <img src="{{ reservation.experience.experience_image.url }}">
@@ -22,7 +22,7 @@
               </ul>
             </div>
             <div class="card-action">
-              <span><a class="waves-effect waves-light btn modal-trigger"
+              <span><a class="waves-effect waves-light teal darken-4 btn modal-trigger"
                   href="{% url 'change_reservation' reservation_id=reservation.reservation_id %}">Edit</a></span>
               <button data-target="modal3" data-id="{{ reservation.reservation_id }}"
                 class="waves-effect waves-light btn modal-trigger delete_reservation" id="cancel-btn">Cancel</button>
@@ -45,7 +45,7 @@
 
   <div id="modal3" class="modal">
     <div class="modal-content">
-      <h4>Are you sure you want to cancel your reservation?</h4>
+      <h4 class="headings">Are you sure you want to cancel your reservation?</h4>
       <p>Once you have deleted your reservation you cannot retrive it and you will have to book again.</p>
     </div>
     <div class="modal-footer">

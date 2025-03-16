@@ -11,9 +11,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Discover luxurious Oakdale Spa, hidden in the English countryside. Rejuvenate mind, body, soul. Uncover your wellness must-have.">
+    <meta name="keywords"
+        content="spa, wellness, relaxation, massage, beauty, health, fitness, retreat, countryside, luxury, England, UK">
+    <meta name="author" content="Oakdale Spa">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Oakdale Spa</title>
 
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dybts6jei/image/upload/v1742079956/favicon_t9r5cu.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dybts6jei/image/upload/v1742079956/favicon_t9r5cu.ico"
+        type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts-->
@@ -46,67 +56,70 @@
 <body>
     <header>
         <div class="navbar-fixed">
-            <nav class="brand-logo center">
-                <div class="container">
-                    <div class="nav-wrapper">
-                        <a href="{% url 'home' %}" class="brand-logo">Oakdale Spa</a>
-                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
-                                class="material-icons">menu</i></a>
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                                    aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
-                                    aria-current="page" href="{% url 'past_reservations' %}">Account</a>
-                            </li>
-                            {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                                    aria-current="page" href="{% url 'account_signup' %}">Register</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == login_url %}active{% endif %}"
-                                    aria-current="page" href="{% url 'account_login' %}">Login</a>
-                            </li>
-                            {% endif %}
-
-                            <li><a href="#"></a></li>
-                        </ul>
-                    </div>
-
-                    <div><a class="waves-effect waves-light btn right valign-wrapper"
-                            href="{% url 'reservation' %}">Book
-                            now</a></div>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="{% url 'home' %}" class="brand-logo center">Oakdale Spa</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
+                                aria-current="page" href="{% url 'past_reservations' %}">Account</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </div>
+
+                <div><a class="waves-effect waves-light teal darken-4 btn right valign-wrapper"
+                        href="{% url 'reservation' %}">Book
+                        now</a></div>
             </nav>
+        </div>
 
             <ul class="sidenav" id="mobile-demo">
-                {% if user.is_authenticated %}
-                <li><a class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                    aria-current="page" href="{% url 'account_logout' %}">Logout</a></li>
-                <li><a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
-                    aria-current="page" href="{% url 'past_reservations' %}">Account</a></li>
-                {% else %}
-                <li><a class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                    aria-current="page" href="{% url 'account_signup' %}">Register</a></li>
-                <li><a class="nav-link {% if request.path == login_url %}active{% endif %}"
-                    aria-current="page" href="{% url 'account_login' %}">Login</a></li>
-                {% endif %}
+             {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
+                                aria-current="page" href="{% url 'past_reservations' %}">Account</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
             </ul>
-        </div>
     </header>
     <main class="main-content">
         {% if messages %}
         <span>
-        <ul class="messages center-align" id="scale-demo">
-            {% for message in messages %} 
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                {% endfor %}
-        </ul>
-    </span>
+            <ul class="messages center-align" id="scale-demo">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+        </span>
         {% endif %}
         {% block content %}
 
@@ -115,29 +128,38 @@
     </main>
     <footer class="page-footer adapted-footer">
         <div class="container">
-            <h5 class="logo center-align">Oakdale Spa</h5>
+            <h3 class="logo center-align headings">Oakdale Spa</h3>
             <div class="row">
                 <div class="col s12">
-                    <div class="col m6 s12">
-                        <h5 class="white-text center-align">Contact</h5>
-                        <p class="grey-text center-align text-lighten-3"><i class="fa-solid fa-phone"></i> 01452 700 800</p>
-                        <p class="grey-text center-align text-lighten-3"><i class="fa-solid fa-envelope"></i> visit@oakdale.co.uk</p>
-                        <p class="grey-text center-align text-lighten-3"><i class="fa-brands fa-whatsapp"></i> Whatsapp</p>
+                    <div class="col m6 s12" id="contact">
+                        <h4 class="white-text center-align headings">Contact</h4>
+                        <a class="grey-text text-lighten-3 contact-details" href="tel:+441452700800"><i
+                                class="fa-solid fa-phone"></i> 01452 700 800</a>
+                        <a class="grey-text text-lighten-3 contact-details" href="mailto:visit@oakdale.co.uk"><i
+                                class="fa-solid fa-envelope"></i> visit@oakdale.co.uk</a>
+                        <a class="grey-text text-lighten-3 contact-details" href="tel:+441452700800"><i
+                                class="fa-brands fa-whatsapp"></i> Whatsapp</a>
                     </div>
                     <div class="col m6 s12">
-                        <h5 class="white-text center-align">Find us</h5>
-                        <p class="grey-text center-align text-lighten-3">Oakdale Hall | Ashleworth | Gloucester | Gloucestershire | GL19 3KA</a>
+                        <h4 class="white-text center-align headings">Find us</h4>
+                        <a class="grey-text text-lighten-3"
+                            href="https://www.google.co.uk/maps/place/Ashleworth,+Gloucester+GL19+4JB/@51.9486081,-2.3293818,15z/data=!4m6!3m5!1s0x487101410833d549:0xb6cd6ef812d022b7!8m2!3d51.928369!4d-2.272476!16zL20vMDh4cF9n?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoASAFQAw%3D%3D">Oakdale
+                            Hall | Ashleworth | Gloucester | Gloucestershire | GL19 3KA</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col 12">
-            <h5 class="white-text center-align">Search</h5>
+            <h5 class="white-text center-align headings">Search</h5>
             <ul class="social-links">
-                <li><a class="grey-text text-lighten-3" href="#!"><i class="fa-brands fa-twitter"></i></a></li>
-                <li><a class="grey-text text-lighten-3" href="#!"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li><a class="grey-text text-lighten-3" href="#!"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a class="grey-text text-lighten-3" href="#!"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a class="grey-text text-lighten-3" aria-label="Instagram link" href="https://www.instagram.com/"
+                        target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a class="grey-text text-lighten-3" aria-label="You Tube link" href="https://www.youtube.com/"
+                        target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a class="grey-text text-lighten-3" aria-label="Facebook link" href="https://en-gb.facebook.com/"
+                        target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a class="grey-text text-lighten-3" aria-label="X formerly Twitter link"
+                        href="https://x.com/?lang=en-gb" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
             </ul>
         </div>
         <div class="footer-copyright">
@@ -145,6 +167,7 @@
                 © 2025 Oakdale Spa
             </div>
         </div>
+        a
     </footer>
 
     <!-- Compiled and minified JavaScript -->

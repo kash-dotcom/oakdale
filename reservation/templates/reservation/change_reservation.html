@@ -5,15 +5,15 @@
 {% load static %}
 
 <div class="container">
-    <h4>Change your reservation</h4>
-    <p>Don't forgot to select your experience</p>
+    <h4 class="headings">Change your reservation</h4>
+    <p class="warnings">Don't forgot to select your experience</p>
     <div class="row">
      <form class="col s12" id="reservation_form" method="POST" action="{% url 'change_reservation' reservation_id=reservation_id %}">
        {% csrf_token %}
        {{ guest_form }}
        {{ experience_form }}
        {{ reservation_form }}
-       <button type="submit" class="waves-effect waves-light btn">Save</button>
+       <button type="submit" class="waves-effect waves-light btn teal darken-4">Save</button>
      </form>
    </div>
 </div>
