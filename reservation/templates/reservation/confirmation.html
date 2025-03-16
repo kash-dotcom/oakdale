@@ -26,7 +26,7 @@
             <h2>Reservation Details</h2>
             <ul>
                 <li>Number of Guests: {{reservation.number_of_guests}}</li>
-                <li> Date: {{reservation.reservation_date}}</li>
+                <li> Date: {{reservation.reservation_date|date:"d F Y"}}</li>
                 <li> Experience: {{experience.experience_name}}</li>
                 <li> Total Price: £{{reservation.reservation_price}}<li>
 

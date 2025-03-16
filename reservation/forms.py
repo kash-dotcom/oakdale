@@ -26,7 +26,7 @@ class GuestForm(forms.ModelForm):
 class ExperienceForm(forms.ModelForm):
     experience_name = forms.ModelChoiceField(
         queryset=Experience.objects.filter(publish=True),
-        empty_label=None,)
+        empty_label="--------------",)
 
     class Meta:
         model = Experience
@@ -48,7 +48,8 @@ class ReservationForm(forms.ModelForm):
                     'placeholder': 'Number of Guests'}),
             'reservation_date': forms.DateInput(
                 attrs={'class': 'datepicker',
-                       'placeholder': 'Reservation Date'}),
+                       'placeholder': 'Reservation Date',
+                       'type': 'text', }),
         }
 
     # def save(self, commit=True):

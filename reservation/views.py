@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 class ReservationListView(generic.ListView):
     model = Reservation
-    queryset = Reservation.objects.all()
+    queryset = Reservation.objects.all().order_by('-reservation_date')
     template_name = "reservation/reservation.html"
     context_object_name = 'reservations'
 
@@ -152,7 +152,8 @@ def change_reservation(request, reservation_id):
 @login_required
 def past_reservations(request):
     guest = Guest.objects.get(user=request.user)
-    reservations = Reservation.objects.filter(guest=guest)
+    reservations = Reservation.objects.filter(guest=guest)\
+        .order_by('-reservation_date')
     return render(request, 'reservation/past_reservations.html',
                   {'reservations': reservations})
 
@@ -160,7 +161,7 @@ def past_reservations(request):
 @login_required
 def delete_reservation(request):
     if request.method == 'POST':
-        reservation_id = request.POST.get('reservation_id')
+        reservation_id = request.POST.get('-reservation_id')
         if reservation_id:
             guest = Guest.objects.get(user=request.user)
             reservation = get_object_or_404(
