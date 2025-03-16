@@ -14,7 +14,9 @@ class Reservation(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     experience = models.ForeignKey(
         Experience, on_delete=models.CASCADE, related_name='reservations')
-    guest = models.ForeignKey(Guest, on_delete=models.CASCADE, related_name='guest_reservations')
+    guest = models.ForeignKey(
+        Guest, on_delete=models.CASCADE, related_name='guest_reservations'
+    )
 
     def __str__(self):
         return (f"{self.reservation_date.strftime('%d-%m-%Y')} - "

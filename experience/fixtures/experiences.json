@@ -1,0 +1,106 @@
+[
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "The Garden Sanctuary",
+            "experience_description": "Embrace nature's peace. Guided meditation in our award-winning gardens, soothing massages, and organic lunch for total well-being.",
+            "experience_full_description": "Begin with a guided meditation in our award-winning gardens, followed by a soothing Swedish massage using botanical oils. Enjoy a light, organic lunch and an afternoon of relaxation in our tranquil lounges.",
+            "experience_price": "159",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 0
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Ashleworth Escape",
+            "experience_description": "A romantic retreat for two. Shared aromatherapy baths, couples massages, and private champagne tea create an unforgettable escape.",
+            "experience_full_description": "A couples' retreat, featuring a shared aromatherapy bath, side-by-side massages, and a private champagne afternoon tea. Enjoy exclusive access to our relaxation suite and gardens for a truly romantic escape.",
+            "experience_price": "250",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Active Recovery Ritual",
+            "experience_description": "Peak performance, deep relaxation. Targeted fitness, followed by hot stone & sports massage for muscle recovery & soothing.",
+            "experience_full_description": "This experience is tailored for those seeking both physical recovery and deep relaxation. Begin with a personalised workout in our state-of-the-art fitness center, focusing on your specific goals and needs. Then, transition to a targeted sports massage, addressing key muscle groups to relieve tension and improve flexibility. Conclude with a soothing hot stone massage, where warm basalt stones melt away stress and promote circulation. This ritual is ideal for athletes, fitness enthusiasts, or anyone seeking to revitalise their body and mind after exertion.",
+            "experience_price": "299",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 0
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Bridal Bliss",
+            "experience_description": "Radiant beauty, serene calm. A head-to-toe pampering experience, perfect for pre-wedding glow & relaxation.",
+            "experience_full_description": "Prepare for your special day with our comprehensive Bridal Bliss Package, designed to leave you feeling radiant and relaxed. Begin with a luxurious full-body massage to melt away any pre-wedding jitters, followed by a bespoke facial to enhance your natural glow. Our expert estheticians will then provide a meticulous manicure and pedicure, ensuring your hands and feet are picture-perfect. This head-to-toe pampering experience is the ideal way to unwind and prepare for your wedding day, leaving you feeling confident, beautiful, and utterly serene.",
+            "experience_price": "389",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Aromatic Sanctuary",
+            "experience_description": "Sensory journey, inner harmony. Aromatic steam, bespoke massage, and essential oil blends for deep relaxation & balance.",
+            "experience_full_description": "Immerse yourself in the soothing world of aromatherapy with this sensory experience. Begin in our aromatic steam room, where carefully selected essential oils infuse the air, promoting relaxation and clearing the mind. Follow this with a bespoke aromatherapy massage, where our therapists will tailor a blend of essential oils to your specific needs, using gentle and rhythmic techniques to release tension and restore balance. The experience will end with a quiet relaxation period, allowing the aromatic oils to fully absorb and work their magic. This therapy is perfect for those seeking emotional and physical well-being.",
+            "experience_price": "189",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": " Restorative Body Massage",
+            "experience_description": "Deep relaxation, renewed vitality. A full-body massage tailored to your needs, restoring balance and easing tension.",
+            "experience_full_description": "Surrender to the expert hands of our therapists with the Restorative Body Massage, a comprehensive treatment designed to alleviate stress and promote deep relaxation. This full-body massage utilises a combination of Swedish and deep tissue techniques, customised to your preferences and areas of concern. Our therapists will work to release tension from head to toe, focusing on muscle knots and promoting circulation. Using premium massage oils, they will create a soothing and restorative experience, leaving you feeling completely relaxed, rejuvenated, and balanced.",
+            "experience_price": "199",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Radiance Revival Facial",
+            "experience_description": "Reveal your inner glow. A customised facial to cleanse, nourish, and revitalise, leaving your skin radiant and refreshed",
+            "experience_full_description": " Rediscover your skin's natural luminosity with the Radiance Revival Facial. Our expert estheticians will begin with a thorough skin analysis to determine your specific needs, then tailor the treatment accordingly. This facial includes a deep cleanse, gentle exfoliation, and a nourishing mask, followed by a soothing facial massage to stimulate circulation and promote lymphatic drainage. We use premium skincare products, rich in antioxidants and vitamins, to hydrate and revitalise your complexion, leaving you with a radiant and refreshed appearance. This facial is ideal for all skin types and is perfect for those seeking a revitalising and rejuvenating experience.",
+            "experience_price": "150",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    },
+    {
+        "model": "experience.experience",
+        "pk": null,
+        "fields": {
+            "experience_name": "Oakdale Sanctuary Experience",
+            "experience_description": "Unwind, explore, and rejuvenate. Full access to our premier spa facilities for a day of pure relaxation and well-being.",
+            "experience_full_description": "Immerse yourself in a day of unparalleled relaxation with the Oakdale Sanctuary Experience. Enjoy complete access to our exceptional spa facilities, designed to cater to your every need. Begin by unwinding in our aromatic steam rooms and invigorating saunas, designed to cleanse and revitalize. Take a refreshing dip in our pristine swimming pools, or relax in the warmth of our outdoor hot tub. Experience the breathtaking views from our rooftop infinity pool, a true oasis of tranquility. This experience is perfect for those seeking to escape the stresses of daily life and indulge in a day of pure relaxation and well-being.",
+            "experience_price": "120",
+            "created_at": "2025-03-16 19:19:19.754Z",
+            "updated_at": "2025-03-16 19:19:19.754Z",
+            "publish": 1
+        }
+    }
+]

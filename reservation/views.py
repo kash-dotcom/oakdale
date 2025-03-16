@@ -41,7 +41,7 @@ def add_reservation(request):
         if (guest_form.is_valid() and
             experience_form.is_valid() and
                 reservation_form.is_valid()):
-            
+
             guest, created = Guest.objects.get_or_create(user=request.user)
             if not created:
                 guest_form = GuestForm(request.POST, instance=guest)
@@ -79,7 +79,8 @@ def add_reservation(request):
 
 def confirmation(request, reservation_id):
     guest = get_object_or_404(Guest, user=request.user)
-    reservation = get_object_or_404(Reservation, reservation_id=reservation_id, guest=guest)
+    reservation = get_object_or_404(
+        Reservation, reservation_id=reservation_id, guest=guest)
     guest = reservation.guest
     experience = reservation.experience
 
@@ -99,7 +100,8 @@ def change_reservation(request, reservation_id):
 
     print(guest)
 
-    reservation = get_object_or_404(Reservation, reservation_id=reservation_id, guest=guest)
+    reservation = get_object_or_404(
+        Reservation, reservation_id=reservation_id, guest=guest)
     print(reservation)
     print(reservation.experience)
 
@@ -172,108 +174,3 @@ def delete_reservation(request):
         else:
             messages.error(request, 'Reservation ID is missing.')
     return redirect('past_reservations')
-
-    #    # Check if the experience name has changed
-    #         if new_experience.experience_name != reservation.experience.experience_name:
-    #             new_experience.pk = None
-    #             new_experience.save(commit=False)
-
-    #             reservation.experience.experience_name = new_experience.experience_name
-    #             reservation.experience.experience_description = new_experience.experience_description
-    #             reservation.experience.experience_image = new_experience.experience_image
-    #             reservation.experience.experience_price = new_experience.experience_price
-    #             reservation.experience = reservation.new_experience
-    #             new_experience.save()
-
-    #         reservation = reservation_form.save(commit=False)
-    #         reservation.reservation_price = (
-    #             reservation.experience.experience_price * reservation.number_of_guests
-    #         )
-
-
-    # if request.method == 'POST':
-    #     reservation_id = request.POST.get('reservation_id')
-    #     reservation = get_object_or_404(Reservation,
-    #       reservation_id=reservation_id)
-    #     guest_form = GuestForm(request.POST, instance=reservation.guest)
-    #     experience_form = ExperienceForm(request.POST,
-    #       instance=reservation.experience)
-    #     reservation_form = ReservationForm(request.POST,
-    #       instance=reservation)
-
-    #     if reservation_form.is_valid() and guest_form.is_valid() and
-    #       experience_form.is_valid():
-    #         guest = guest_form.save()
-    #         experience = experience_form.save()
-    #         reservation = reservation_form.save(commit=False)
-    #         reservation.reservation_price = (
-    #             experience.experience_price * reservation.number_of_guests
-    #         )
-    #         reservation_form.save(commit=True)
-
-    #         messages.success(request, 'Reservation updated successfully!')
-    #         return redirect('reservation_confirmation',
-    #                         reservation_id=reservation.reservation)
-    #     else:
-    #         messages.error(request,
-    #           'There was an error with your submission.')
-    # else:
-    #     reservation_id = request.GET.get('reservation_id')
-    #     reservation = get_object_or_404(Reservation,
-    #       reservation_id=reservation_id)
-    #     guest_form = GuestForm(instance=reservation.guest)
-    #     experience_form = ExperienceForm(instance=reservation.experience)
-    #     reservation_form = ReservationForm(instance=reservation)
-
-    #     return render(request, 'past_reservation.html',
-    #                   {'guest_form': guest_form,
-    #                    'experience_form': experience_form,
-    #                    'reservation_form': reservation_form,
-    #                    'reservation_id': reservation_id, })
-
-
-# def change_reservation(request, reservation_id):
-#     # Fetch the guest and reservation
-#     guest = Guest.objects.get(user=request.user)
-#     reservation = get_object_or_404(Reservation,
-#       reservation_id=reservation_id)
-#     # Check if the reservation belongs to the guest
-#     if request.method == 'POST':
-#         guest_form = GuestForm(request.POST, instance=reservation.guest)
-#         experience_form = ExperienceForm(request.POST,
-#           instance=reservation.experience)
-#         reservation_form = ReservationForm(request.POST,
-#             instance=reservation)
-
-#         if reservation_form.is_valid() and guest_form.is_valid() and
-#               experience_form.is_valid():
-#             guest = guest_form.save()
-
-#             experience = experience_form.save()
-#             reservation = reservation_form.save(commit=False)
-#             reservation.reservation_price = (
-#                 experience.experience_price * reservation.number_of_guests
-#             )
-#             reservation.save()
-
-#             messages.success(request, 'Reservation updated successfully!')
-#             return redirect('past_reservations')
-#         else:
-#             messages.error(request,
-#                  'There was an error with your submission.')
-#     else:
-#         guest_form = GuestForm(instance=guest)
-#         experience_form = ExperienceForm(
-#             instance=reservation.experience,
-#             initial={'experience_name': reservation.experience}
-#         )
-#         reservation_form = ReservationForm(instance=reservation)
-
-#     context = {
-#         'guest_form': guest_form,
-#         'experience_form': experience_form,
-#         'reservation_form': reservation_form,
-#         'reservation': reservation,
-#         'reservation_id': reservation_id,
-#     }
-#     return render(request, 'delete_reservation.html', {})

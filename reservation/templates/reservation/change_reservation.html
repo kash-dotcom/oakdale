@@ -6,6 +6,7 @@
 
 <div class="container">
     <h4>Change your reservation</h4>
+    <p>Don't forgot to select your experience</p>
     <div class="row">
      <form class="col s12" id="reservation_form" method="POST" action="{% url 'change_reservation' reservation_id=reservation_id %}">
        {% csrf_token %}
