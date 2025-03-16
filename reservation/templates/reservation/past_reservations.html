@@ -9,7 +9,7 @@
   {% if reservations %}
     {% for reservation in reservations %}
     <div class="col s12">
-      <h4 class="header">{{reservation.experience.experience_name}} | {{reservation.reservation_date}} </h2>
+      <h4 class="header">{{ reservation.experience.experience_name }} | {{ reservation.reservation_date|date:"d F Y" }}</h2>
         <div class="card horizontal collection">
           <div class="card-image">
             <img src="{{ reservation.experience.experience_image.url }}">

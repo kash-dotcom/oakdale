@@ -9,8 +9,12 @@ $(document).ready(function () {
   });
   $('.modal').modal();
   $('login_success').tooltip();
-  $('.datepicker').datepicker();
   $('.parallax').parallax({ responsiveThreshold: 0 });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.datepicker');
+  var instances = M.Datepicker.init(elems, format = 'dd-mm-yyyy', autoclose = true, showClearBtn = true);
 });
 
 // https://www.youtube.com/watch?v=4NqAiqdjMI8&list=PLCC34OHNcOtpRfBYk-8y0GMO4i1p1zn50&index=13&ab_channel=Codemy.com
