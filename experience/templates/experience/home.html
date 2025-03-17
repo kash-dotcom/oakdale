@@ -36,7 +36,7 @@
                         {% else %}
                         <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
                         <span class="card-title grey darken-4">{{ experience.experience_name }}</span>
-                        <a class="btn-floating halfway-fab waves-effect waves-light btn modal-trigger" href="modal {{ experience.experience_id }}"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect waves-light btn modal-trigger" href="#modal {{ experience.experience_id }}"><i class="material-icons">add</i></a>
                         <div id="modal {{ experience.experience_id }}" class="modal {{ experience.experience_id }}">
                             <div class="modal-content">
                                 <h4 class="headings">{{ experience.experience_name | safe }}</h4>
