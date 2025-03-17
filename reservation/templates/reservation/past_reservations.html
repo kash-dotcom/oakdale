@@ -9,10 +9,10 @@
   {% if reservations %}
     {% for reservation in reservations %}
     <div class="col s12">
-      <h2 class="header headings" class="past-reservation">{{ reservation.experience.experience_name }} | {{ reservation.reservation_date|date:"d F Y" }}</h2>
+      <h2 class="past-reservation header headings">{{ reservation.experience.experience_name }} | {{ reservation.reservation_date|date:"d F Y" }}</h2>
         <div class="card horizontal collection">
           <div class="card-image">
-            <img src="{{ reservation.experience.experience_image.url }}">
+            <img src="{{ reservation.experience.experience_image.url }}" alt="{{ reservation.experience.experience_name }}">
           </div>
           <div class="card-stacked">
             <div class="card-content valign-wrapper">
@@ -35,15 +35,14 @@
       <div class="row">
         <div class="col s12 center-align">
           <p>It looks like you haven't made any reservations yet. Why not book an experience with us today?</p> 
-          <a id="book-now" class="waves-effect waves-light btn center-align" href="{% url 'home' %}#section-experiences">Book now</a>
-          <img class="col s12" src="https://res.cloudinary.com/dybts6jei/image/upload/v1742031409/twin-massage_bg4e0i.jpg" alt="Woman receiving a face massage" class="responsive-img">
+          <a id="book-now" class="waves-effect waves-light btn center-align responsive-img teal darken-4" href="{% url 'home' %}#section-experiences">Book now</a>
+          <img class="col s12" src="https://res.cloudinary.com/dybts6jei/image/upload/v1742160560/twin-massage_rospud.jpg" alt="Woman receiving a face massage">
         </div>
       </div>
   </div>
   {% endif %}
-</div>
 
-  <div id="modal3" class="modal">
+<div id="modal3" class="modal">
     <div class="modal-content">
       <h4 class="headings">Are you sure you want to cancel your reservation?</h4>
       <p>Once you have deleted your reservation you cannot retrive it and you will have to book again.</p>
@@ -53,7 +52,7 @@
         {% csrf_token %}
         <input type="hidden" name="reservation_id" id="delete-reservation-id">
         <button type="submit" class="modal-close btn waves-effect waves-light btn-flat">Yes, I'm sure</button>
-        <button href="#!" class="modal-close btn waves-effect waves-light btn-flat">No, I'm not </button>
+        <button type="reset" class="modal-close btn waves-effect waves-light btn-flat">No, I'm not </button>
       </form>
     </div>
   </div>

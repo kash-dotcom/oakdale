@@ -43,9 +43,8 @@ class ReservationForm(forms.ModelForm):
         fields = ['number_of_guests', 'reservation_date']
 
         widgets = {
-            'number_of_guests': forms.Select(choices=[(
-                    i, i) for i in range(1, 11)], attrs={
-                    'placeholder': 'Number of Guests'}),
+            'number_of_guests': forms.Select(choices=[
+                (i, i) for i in range(1, 11)],),
             'reservation_date': forms.DateInput(
                 attrs={'class': 'datepicker',
                        'placeholder': 'Reservation Date',

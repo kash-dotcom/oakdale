@@ -89,27 +89,27 @@
             </nav>
         </div>
 
-            <ul class="sidenav" id="mobile-demo">
-             {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_logout' %}">Logout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
-                                aria-current="page" href="{% url 'past_reservations' %}">Account</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_signup' %}">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                                href="{% url 'account_login' %}">Login</a>
-                        </li>
-                        {% endif %}
-            </ul>
+        <ul class="sidenav" id="mobile-demo">
+            {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == reservation_url %}active{% endif %}"
+                            aria-current="page" href="{% url 'past_reservations' %}">Account</a>
+                    </li>
+            {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_login' %}">Login</a>
+                    </li>
+            {% endif %}
+        </ul>
     </header>
     <main class="main-content">
         {% if messages %}
@@ -122,7 +122,6 @@
         </span>
         {% endif %}
         {% block content %}
-
         {% endblock %}
 
     </main>

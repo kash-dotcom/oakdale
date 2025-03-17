@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block content %}
+
 {% load cloudinary %}
 {% load static %}
-
+{% block content %}
 <div class="container">
     <div class="row">
         <div class="col s12">
@@ -12,7 +12,7 @@
                 confirm your reservation.</p>
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="{{ experience.experience_image.url }}">
+                    <img src="{{ experience.experience_image.url }}" alt="{{ experience.experience_name }}">
                 </div>
                 <div class="card-stacked">
                     <div class="card-content valign-wrapper">
@@ -23,7 +23,7 @@
         </div>
     <div class="col s12">
             <br>
-            <h2>Reservation Details</h2>
+            <h2 class="headings">Reservation Details</h2>
             <ul>
                 <li>Number of Guests: {{reservation.number_of_guests}}</li>
                 <li> Date: {{reservation.reservation_date|date:"d F Y"}}</li>
@@ -35,5 +35,6 @@
             <p>We look forward to welcoming you to Oakdale Spa and providing you with a truly rejuvenating experience.
                 If you have any questions or require further assistance, please do not hesitate to contact us.</p>
     </div>
+</div>
 </div>
     {% endblock %}

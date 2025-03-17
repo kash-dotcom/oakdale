@@ -98,12 +98,8 @@ def change_reservation(request, reservation_id):
     # Fetch the guest and reservation
     guest = Guest.objects.get(user=request.user)
 
-    print(guest)
-
     reservation = get_object_or_404(
         Reservation, reservation_id=reservation_id, guest=guest)
-    print(reservation)
-    print(reservation.experience)
 
     if request.method == 'POST':
         guest_form = GuestForm(request.POST, instance=reservation.guest)
@@ -163,14 +159,13 @@ def past_reservations(request):
 @login_required
 def delete_reservation(request):
     if request.method == 'POST':
-        reservation_id = request.POST.get('-reservation_id')
+        reservation_id = request.POST.get('reservation_id')
         if reservation_id:
             guest = Guest.objects.get(user=request.user)
             reservation = get_object_or_404(
                 Reservation, reservation_id=reservation_id, guest=guest)
             reservation.delete()
             messages.success(request, 'Reservation deleted successfully!')
-            print('Reservation deleted successfully!')
         else:
             messages.error(request, 'Reservation ID is missing.')
     return redirect('past_reservations')
