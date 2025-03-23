@@ -8,7 +8,9 @@ from experience.models import Experience
 class Reservation(models.Model):
     reservation_id = models.AutoField(primary_key=True)
     reservation_date = models.DateField()
-    number_of_guests = models.IntegerField()
+    number_of_guests = models.IntegerField(
+        verbose_name="Number of guests, don't forget yourself!"
+    )
     reservation_price = models.DecimalField(max_digits=6, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

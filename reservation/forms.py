@@ -41,22 +41,17 @@ class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
         fields = ['number_of_guests', 'reservation_date']
+        labels = {
+            'number_of_guests': "Number of guests, don't forget yourself!",
+            'reservation_date': 'Reservation Date', }
 
         widgets = {
-            'number_of_guests': forms.Select(choices=[
-                (i, i) for i in range(1, 11)],),
+            'number_of_guests': forms.Select(
+                choices=[('', "Select the number of guests, don't forget yourself!")] + [(i, i) for i in range(1, 11)],
+                attrs={'class': 'form-control'}
+            ),
             'reservation_date': forms.DateInput(
                 attrs={'class': 'datepicker',
                        'placeholder': 'Reservation Date',
                        'type': 'text', }),
         }
-
-    # def save(self, commit=True):
-    #     total_price = super().save(commit=False)
-    #     total_price.reservation_price = (
-    #         total_price.number_of_guests
-    # * total_price.experience.experience_price
-    #     )
-    #     if commit:
-    #         total_price.save()
-    #     return total_price
