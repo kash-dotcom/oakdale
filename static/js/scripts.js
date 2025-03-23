@@ -10,6 +10,7 @@ $(document).ready(function () {
   // $('.modal').modal();
   $('login_success').tooltip();
   $('.parallax').parallax({ responsiveThreshold: 0 });
+  console.log('Materialize loaded');
 });
 
 //Modal//
@@ -51,38 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
 });
-
-  // // Autofill experience price based on selected experience
-  // var experienceSelect = document.getElementById('id_experience_name');
-  // var experiencePriceInput = document.getElementById('id_experience_price');
-
-  // experienceSelect.addEventListener('change', function() {
-  //   var selectedExperienceId = this.value;
-  //   fetch(`/get_experience_price/${selectedExperienceId}/`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       experiencePriceInput.value = data.experience_price;
-  //     });
-  // });
-
-// modal 
-// document.querySelectorAll('.modal-trigger').forEach(function(trigger) {
-//   trigger.addEventListener('click', function() {
-//     var reservationId = this.getAttribute('data-id');
-//     var reservationDate = this.getAttribute('data-date');
-//     var numberOfGuests = this.getAttribute('data-guests');
-//     var experienceId = this.getAttribute('data-experience');
-
-//     if (this.href.includes('#modal2')) {
-//       document.getElementById('reservation-id').value = reservationId;
-//       document.getElementById('id_reservation_date').value = reservationDate;
-//       document.getElementById('id_number_of_guests').value = numberOfGuests;
-//       document.getElementById('id_experience_name').value = experienceId;
-//     } else if (this.href.includes('#modal3')) {
-//       document.getElementById('delete-reservation-id').value = reservationId;
-//     }
-//   });
-// });
 
 
 // delete reservation

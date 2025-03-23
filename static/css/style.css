@@ -7,9 +7,34 @@ nav .nav-wrapper {
   flex-wrap: wrap;
 }
 
+.card .card-title {
+  font-family: 'Libre Baskerville';
+}
+
+
+.geologica-regular {
+  font-family: "Geologica", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0,
+    "SHRP" 0;
+}
+
+html {
+  background-color: whitesmoke;
+  font-family: geologica-regular, sans-serif;
+  font-optical-sizing: auto;
+}
+
+
 p {
-  font-size: 2rem;
-  color: #323232
+  font-size: 115%;
+  color: #323232;
+  font-family: geologica-regular, sans-serif;
+  font-optical-sizing: auto;
 }
 
 .account-link{
@@ -75,10 +100,6 @@ font-size: xx-large;
   font-weight: 500;
 }
 
-p {
-
-  font-size: medium;
-}
 
 .title {
   position: absolute;
