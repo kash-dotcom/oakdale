@@ -1,9 +1,21 @@
-/* General Styles */
-body {
-  font-family: 'Libre Baskerville', serif;
+nav .nav-wrapper {
+  display: flex;
+  background-color: #edede8;
+  height: 169%;
+  flex-direction: column-reverse;
+  align-content: flex-end;
+  flex-wrap: wrap;
 }
 
-/* Headings */
+p {
+  font-size: 2rem;
+  color: #323232
+}
+
+.account-link{
+  color: #3f00f4;
+}
+
 h1 {
   font-size: 4rem;
   color: #323232;
@@ -18,43 +30,69 @@ h4 {
   font-size: 1.5rem;
   color: #323232;
 }
-
-.headings {
-  font-family: 'Libre Baskerville', serif;
+.parallax{
+  position:static;
 }
 
-/* Paragraphs */
-p {
-  font-size: 2rem;
-  color: #323232;
+.face-massage {
+  background-color: #f5f5f5;
 }
 
-/* Display message to user */
 .messages {
-  font-size: xx-large;
+font-size: xx-large;
 }
 
-/* Navigation */
-nav {
-  background-color: #edede8;
-}
-
-nav .nav-wrapper {
-  display: flex;
-  background-color: #edede8;
-  height: 169%;
-  flex-direction: column-reverse;
-  align-content: flex-end;
-  flex-wrap: wrap;
-}
-
-nav ul a {
+.nav-link {
   color: #3c3c3c;
 }
 
-nav .brand-logo {
-  max-height: 100%;
-  font-family: 'Libre Baskerville';
+#book-now {
+  margin-bottom: 24px;
+}
+
+#cancel-btn {
+  background-color: #3c3c3c;
+}
+
+#scale-demo {
+  color: #004d3f;
+  font-family: libre baskerville;
+  font-size: x-large;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.headings {
+  font-family: libre baskerville, serif;
+}
+
+.warnings {
+  color: #26a69a;
+  font-weight: 500;
+}
+
+p {
+
+  font-size: medium;
+}
+
+.title {
+  position: absolute;
+  color: #3c3c3c;
+  font-family: libre baskerville;
+  font-size: 3rem;
+  z-index: 1;
+}
+
+nav {
+    background-color: #edede8;
+}
+
+nav ul a {
   color: #3c3c3c;
 }
 
@@ -62,27 +100,40 @@ nav .brand-logo {
   color: #3c3c3c;
 }
 
-.nav-link {
-  color: #3c3c3c;
+/* login in */
+
+#remember-me-label {
+  visibility: hidden;
 }
 
-/* Footer */
-#contact {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+/* https://matthewjamestaylor.com/bottom-footer#solution */
+.main-content {
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    grid-template-columns:100%;
+ 
+    /* fallback height */
+    min-height:100vh;
+ 
+    /*  new small viewport height for modern browsers */
+    min-height:100svh; 
+
+    margin-top: 65px;
+
+}
+ 
+ 
+nav .brand-logo {
+    max-height: 100%;
+    font-family: libre baskerville;
+    color: #3c3c3c;
 }
 
-#contact a {
-  padding-bottom: 6px;
-  font-size: 16px;
-}
-
-.account-link {
-  color: #3f00f4;
+.logo {
+    font-family: libre baskerville;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: 2.1rem;
 }
 
 .adapted-footer {
@@ -95,72 +146,18 @@ nav .brand-logo {
 }
 
 .social-links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-inline-start: 28%;
-  margin-inline-end: 28%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-inline-start: 28%;
+    margin-inline-end: 28%;
 }
 
-/* Home Page */
-.parallax {
-  position: static;
-}
-
-.face-massage {
-  background-color: #f5f5f5;
-}
-
-.welcome {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-}
-
-.title {
-  position: absolute;
-  color: #3c3c3c;
-  font-family: 'Libre Baskerville';
-  font-size: 3rem;
-  z-index: 1;
-}
-
-/* Buttons */
-#book-now {
-  margin-bottom: 24px;
-}
-
-#cancel-btn {
-  background-color: #3c3c3c;
-}
-
-/* Form Validation */
-.input-field label {
-  color: #af3557;
-}
-
-.input-field input[type=text]:focus+label {
-  color: #af3557;
-}
-
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid #af3557;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-.input-field input[type=text].valid {
-  border-bottom: 1px solid #af3557;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-.input-field input[type=text].invalid {
-  border-bottom: 1px solid #af3557;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-.input-field .prefix.active {
-  color: #af3557;
+@media screen and (max-width: 530px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
 }
 
 /* Reservations */
@@ -172,55 +169,62 @@ nav .brand-logo {
   font-size: 2rem;
 }
 
-/* Sign Out */
-.signout-container {
+/* sign out */
+.signout-container  {
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 14%;
 }
-
-/* Experience Cards */
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+/* Experience  */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating)  {
   font-family: 'Libre Baskerville';
   font-size: xx-large;
-  color: #004d40;
-}
+  color: #004d40 ;
 
-/* Miscellaneous */
-.warnings {
-  color: #26a69a;
-  font-weight: 500;
-}
-
-#scale-demo {
-  color: #004d3f;
-  font-family: 'Libre Baskerville';
-  font-size: x-large;
-}
-
-#remember-me-label {
-  visibility: hidden;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 530px) {
-  nav .brand-logo {
-    font-size: 1.5rem;
+  /* Form validation */
+  
+  /* label color */
+  .input-field label {
+    color: #000;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #000;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #000;
   }
 }
 
-/* Main Content Layout */
-.main-content {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
+/* footer */
 
-  /* fallback height */
-  min-height: 100vh;
+#contact {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  /* new small viewport height for modern browsers */
-  min-height: 100svh;
-
-  margin-top: 65px;
+#contact a {
+  padding-bottom: 6px;
+  font-size: 16px;
 }
