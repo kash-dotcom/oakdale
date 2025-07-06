@@ -47,7 +47,9 @@ class ReservationForm(forms.ModelForm):
 
         widgets = {
             'number_of_guests': forms.Select(
-                choices=[('', "Select the number of guests, don't forget yourself!")] + [(i, i) for i in range(1, 11)],
+                choices=[
+                    ('', "Select the number of guests, don't forget yourself!")
+                ] + [(i, i) for i in range(1, 11)],
                 attrs={'class': 'form-control'}
             ),
             'reservation_date': forms.DateInput(
