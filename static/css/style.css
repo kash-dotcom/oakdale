@@ -223,6 +223,9 @@ nav .brand-logo {
 .input-field .prefix.active {
   color: #000;
 }
+.select-wrapper input.select-dropdown {
+  color: #004d40;
+}
 
 /* footer */
 

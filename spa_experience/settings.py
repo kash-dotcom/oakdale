@@ -16,6 +16,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 import cloudinary
+from csp.constants import SELF
 
 # print("------- DATABASE URL -------")
 # print(os.environ.get("DATABASE_URL"))
@@ -33,7 +34,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com',]
 
@@ -177,7 +178,53 @@ cloudinary.config(
     secure=True,
 )
 
-CSP_DEFAULT_SRC = ("'self'",)
-CSP_SCRIPT_SRC = ("'self'", 'https://cdnjs.cloudflare.com', 'https://code.jquery.com')
-CSP_STYLE_SRC = ("'self'", 'https://fonts.googleapis.com')
-CSP_FONT_SRC = ("'self'", 'https://fonts.gstatic.com')
+CONTENT_SECURITY_POLICY = {
+    "EXCLUDE_URL_PREFIXES": [
+        "/admin",
+        "/reservation",
+    ],
+    "DIRECTIVES": {
+        "default-src": [SELF],
+        "script-src": [
+            SELF,
+            "https://cdnjs.cloudflare.com",
+            "https://code.jquery.com",
+            "https://kit.fontawesome.com",
+        ],
+        "style-src": [
+            SELF,
+            "https://fonts.googleapis.com",
+            "https://ka-f.fontawesome.com",
+            "https://cdnjs.cloudflare.com",
+            # "'unsafe-inline'",
+        ],
+        "font-src": [
+            SELF,
+            "https://fonts.gstatic.com",
+            "https://ka-f.fontawesome.com",
+        ],
+        "img-src": [
+            SELF,
+            "data:",
+            "https://res.cloudinary.com"
+        ],
+        "connect-src": [
+            SELF,
+            "https://ka-f.fontawesome.com",
+        ],
+        "style-src": [
+            SELF,
+            "https://fonts.googleapis.com",
+            "https://cdnjs.cloudflare.com",
+            "https://ka-f.fontawesome.com"
+        ],
+        "style-src-elem": [
+            SELF,
+            "https://fonts.googleapis.com",
+            "https://cdnjs.cloudflare.com",
+            "https://ka-f.fontawesome.com"
+        ],
+    },
+}
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
