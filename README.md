@@ -211,7 +211,110 @@ This project utilised agile project management techniques, with Monday.com servi
 
 * **Spa Packages:** Offer spa packages for special occasions, like birthdays, anniversaries, or holidays.
 
+# Testing
 
+Page | Language Test Type| Status | User Action | Expected Results | Outcome
+|----|----------|--------|-------------|------------------|---------|
+**home.html**|JavaScript|All |	Click the menu|	Open the navigation slider to the left|	Pass|
+||Python|Logged-in |-|	Message appears under the header|	Pass
+||Python|Logged in|-|	Book Now button	Open the reservation page|	Pass
+||Python|Logged out/not registered|	Click **Book Now** button|	Open the reservation page(sign-up/login)|	Pass
+||JavaScript|All|Click the + button|Opens the modal with more information|	Pass
+||Python|Logged out/not registered |	Click **reserve your peace here**|	Open the reservation page(sign-up/login)|	Pass
+||Python|Logged in|	Click **reserve your peace here**|	Open the reservation page	|Pass
+||Python|All|Click **price**|	Open the reservation page(sign-up/login)|	Pass
+||Python|All|Click **phone number**|	Open the application to make phone calls	|Pass
+||Python|All|Click the **email address**|		Opens the application to send an email|	Pass
+||Python|All|Click **WhatsApp** logo|	Opens WhatsApp|	Pass
+||Python|All|Click **Address**	|	Opens Google maps to Ashleworth	|Pass
+||Python|All|Click **Instagram’s** logo|	Opens Instagram	|PassPass
+||Python|All|Click **YouTube’s** logo	|Opens YouTube	Opens YouTube	|Pass
+||Python|All|Click **Facebook’s** logo|	Opens Facebook|	Pass
+||Python|All|Click **X(formerly Twitter)** logo| 	Opens X formerly Twitter|	Pass
+|**reservation.html**|Python|	Logged out/not registered|	Click sign up|	Opens signup.html |	Pass
+||Python|Registered user|	Click **login**|	Opens login page	|Pass
+||Python|Registered user|	Enter first name|	Input name|	Pass
+||Python|Registered user|	Enter last name|	Input name|	Pass
+||Python|Registered user|	Enter address	|Input email address that must include **@** |Pass
+||Python|Registered user|	Enter city	|Input address	|Pass
+||Python|Registered user|	Enter postcode	|Input postcode|	Pass
+||Python|Registered user|	Enter home number|	Input phone number|	Pass
+||JavaScript|Registered user	|Select the number of guests from a dropdown list |	Select the number of guests|	Pass
+||JavaScript|Registered user|	Select reservation date from a date picker|	Select reservation date	|Pass
+**past_reservations** |Python| Registered user - No reservations|Click **Book Now** button|Opens the experience section of the home page|	Pass
+||Python| Registered user - With reservation(s)|Click **Edit** button|User is sent the their reservation to edit|	Pass
+||JavaScript| Registered user - With reservation(s)|Click **Cancel** button|A modal window prompts the user to confirm if they want to delete their reservation.|	Pass
+|| JavaScript|Registered user - With reservation(s)|Click **No, I'm not** |The model closes|	Pass
+|| Python|Registered user - With reservation(s)|Click **Yes, I'm sure** |Message appear at the top of the page **Reservation deleted succesfully!**|	Pass
+||Python| Registered user - With reservation(s)|Click **Yes, I'm sure** |User is taken to the pased reservations page and provided with the opportunity to **book now**|	Pass
+**NavBar** |Python | Registered user | User clicks the **logout** button|User is sent to the **Logout** page and is prompted if they would like to logout|Pass
+||Python|All |Click **Reservations**|User is sent to past_reservations.html|	Pass
+||JavaScript | All | Click *burger* icon| Modal opens with **logout** and **reservations**|	Pass
+
+## Validation 
+* [JSHint](https://www.jslint.com/) was used to vailidate JavaScript - This passed with no errors
+* [CSS Validation Service ](https://jigsaw.w3.org/css-validator/) - Passed with no errors or warnings
+* [Markup Validation Service](https://validator.w3.org/) - When viewing the rendered HTML in the browser (with Python code removed) - all pages pass validation
+* [Flake8](https://flake8.pycqa.org/en/latest/) - Used as an inline linter - all pages pass **PEP8** vailidation. 
+
+## Known Bugs
+
+|Bug|Description|Planned Fix|
+|---|-----------|-----------|
+|**Users can select dates in the past** | The reservation form currently allows users to pick and submit dates that have already passed. | Add client-side and server-side validation to restrict date selection to today or future dates|
+|**Experience selector**|Regardless of which experience brought the user to the reservation page, they must still select the experience from the dropdown list.|Pre-select the experience in the dropdown based on the user's previous selection or navigation path.|
+|**Autofill experience** | When a user edits a reservation, the previously selected experience is not automatically populated in the dropdown. The user must manually re-select the experience. |Ensure the form pre-selects the original experience when editing a reservation.|
+|**CSP inline style violation** | Used `unsafe-inline` for the Content Secruity Policy blocks inline styles to circumvent errors | Long term fix would be use hashes or nounces for secure inline style usage | 
+
+## Lighthouse Reports
+
+<details>
+<summary>Home Lighthouse Report</summary>
+<br>
+
+![Home Page](https://res.cloudinary.com/dybts6jei/image/upload/v1751925795/home_lighthouse_zqgqgx.png)
+
+</details>
+
+<details>
+<summary>Sign up Lighthouse Report</summary>
+<br>
+
+![Sign_up](https://res.cloudinary.com/dybts6jei/image/upload/v1751925795/sign_up_lighthouse_nmcfi0.png)
+
+</details>
+
+<details>
+<summary>Sign in Lighthouse Report</summary>
+<br>
+
+![Sign_in](https://res.cloudinary.com/dybts6jei/image/upload/v1751925794/sign_in_lighthouse_ycnlbo.png)
+
+</details>
+
+<details>
+<summary>Sign out Lighthouse Report</summary>
+<br>
+
+![Sign out](https://res.cloudinary.com/dybts6jei/image/upload/v1751925795/sign_out_lighthouse_br7ipi.png)
+
+</details>
+
+<details>
+<summary>Book Reservation Lighthouse Report</summary>
+<br>
+
+![Book Reservation](https://res.cloudinary.com/dybts6jei/image/upload/v1751925795/reservation_lighthouse_olj8fk.png)
+
+</details>
+
+<details>
+<summary>Review Reservation Lighthouse Report</summary>
+<br>
+
+![Review Reservation](https://res.cloudinary.com/dybts6jei/image/upload/v1751925795/reservation_edit_lighthouse_rjtixz.png)
+
+</details>
 
 # Technologies Used
 
@@ -304,7 +407,7 @@ Oakdale Spa utilises Cloudinary for image and video management.
         * `CLOUDINARY_URL` (Cloudinary API key)
         * `PORT` (set to 8000)
         * `DISABLE_COLLECTSTATIC` (set to 1 for initial deployment, remove later)
-        * `DATABASE_URL` (ElephantSQL database URL)
+        * `DATABASE_URL` (database URL)
 7.  **Required Files:**
     * Ensure you have `requirements.txt` and `Procfile` in your project root.
 8.  **Deployment:**
@@ -315,41 +418,42 @@ Oakdale Spa utilises Cloudinary for image and video management.
     * Click "Open App" to view the live site.
 # References
 
- [Photo by Ron Lach :](https://www.pexels.com/photo/man-and-woman-in-hot-tub-8845113/)
+**Messages**
+[How to use Messages Framework](https://codewithstein.com/how-to-use-the-messages-framework-django-tutorial/)
 
-## Messages
-[text](https://codewithstein.com/how-to-use-the-messages-framework-django-tutorial/)
-
-## Choice Field
+**Choice Field** 
 [Choice Field](https://stackoverflow.com/questions/8859504/django-form-dropdown-list-of-numbers)
 
-# Overriding CSS Frameworks
+**Overriding CSS Frameworks** - 
 [Jonathan Soma](https://jonathansoma.com/everything/web/overriding-frameworks/)
 
-# Media
+**Code Institute's Tutorials** [Code Institute](https://codeinstitute.net)
+
+**Error Handling** - [HTTP Cats]([text](https://http.cat/))
+
+**Test Cases** -
+[Accelatest](https://accelatest.com/how-to-write-test-cases-for-login-page/)
+
+**User Stories** - [Parabol](https://www.parabol.co/blog/user-story-examples/#user-story-examples-for-online-shopping)
+
+## Media
+
+ [Photo by Ron Lach](https://www.pexels.com/photo/man-and-woman-in-hot-tub-8845113/)
 
  [Compass Pools](https://www.compass-pools.co.uk/learning-centre/faqs/a-guide-to-designing-and-building-an-infinity-pool-and-how-it-works/)
 
  [Pexel](https://www.pexels.com/)
 
-#
 [Overlapping Divs](https://stackoverflow.com/questions/2527782/div-on-top-of-div-using-z-index)
 
 ## Design
 [Colour Picker]([text](https://imagecolorpicker.com/))
 
-## Error Handling
-[HTTP Cats]([text](https://http.cat/))
-
-### Test Cases
-
-[Accelatest](https://accelatest.com/how-to-write-test-cases-for-login-page/)
-
-### User Stories
-[Parabol](https://www.parabol.co/blog/user-story-examples/#user-story-examples-for-online-shopping)
+**README Responsive Display** [Am I Responsive](https://ui.dev/amiresponsive)
 
 
-### Inspiration
+
+**Inspiration** - 
 [Ragdale Hall Spa](https://www.ragdalehall.co.uk/?_ga=2.135503475.33112821.1741430307-1430965657.1741430358)
 
 ## Content
