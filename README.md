@@ -447,7 +447,7 @@ Oakdale Spa utilises Cloudinary for image and video management.
 [Overlapping Divs](https://stackoverflow.com/questions/2527782/div-on-top-of-div-using-z-index)
 
 ## Design
-[Colour Picker]([text](https://imagecolorpicker.com/))
+[Colour Picker](https://imagecolorpicker.com/)
 
 **README Responsive Display** [Am I Responsive](https://ui.dev/amiresponsive)
 
