@@ -191,8 +191,6 @@ nav .brand-logo {
 .signout-container  {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 14%;
 }
 /* Experience  */
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating)  {
