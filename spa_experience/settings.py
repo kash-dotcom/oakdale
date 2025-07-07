@@ -95,6 +95,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'csp.context_processors.nonce',
             ],
         },
     },
@@ -178,6 +179,7 @@ cloudinary.config(
     secure=True,
 )
 
+# Supported by copilot
 CONTENT_SECURITY_POLICY = {
     "EXCLUDE_URL_PREFIXES": [
         "/admin",
@@ -189,19 +191,16 @@ CONTENT_SECURITY_POLICY = {
             SELF,
             "https://cdnjs.cloudflare.com",
             "https://code.jquery.com",
-            "https://kit.fontawesome.com",
         ],
         "style-src": [
             SELF,
             "https://fonts.googleapis.com",
-            "https://ka-f.fontawesome.com",
             "https://cdnjs.cloudflare.com",
-            # "'unsafe-inline'",
+            "'unsafe-inline'",
         ],
         "font-src": [
             SELF,
             "https://fonts.gstatic.com",
-            "https://ka-f.fontawesome.com",
         ],
         "img-src": [
             SELF,
@@ -210,19 +209,6 @@ CONTENT_SECURITY_POLICY = {
         ],
         "connect-src": [
             SELF,
-            "https://ka-f.fontawesome.com",
-        ],
-        "style-src": [
-            SELF,
-            "https://fonts.googleapis.com",
-            "https://cdnjs.cloudflare.com",
-            "https://ka-f.fontawesome.com"
-        ],
-        "style-src-elem": [
-            SELF,
-            "https://fonts.googleapis.com",
-            "https://cdnjs.cloudflare.com",
-            "https://ka-f.fontawesome.com"
         ],
     },
 }
